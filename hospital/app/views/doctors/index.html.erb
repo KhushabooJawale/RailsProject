@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<style>
+th {
+  
+  background-color:#FFD700;
+  color: white;
+
+</style>
+<body style="background-color:powderblue;">
+<h2>Doctors</h2>
+
+<table border="2px" class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Contact</th>
+      <th>Experience</th>
+      <th>Specialization</th>
+      <th>Timings</th>
+      <th>Action</th>
+      
+    </tr>
+  </thead>
+
+  <tbody style="background-color:lemonchiffon;">
+    <% @doctors.each do |doctor| %>
+      <tr>
+        <td><%= doctor.name %></td>
+        <td><%= doctor.age %></td>
+        <td><%= doctor.contact %></td>
+        <td><%= doctor.experience %></td>
+        <td><%= doctor.specialization %></td>
+        <td><%= doctor.timings %></td>
+        <td><%= link_to 'Edit', edit_doctor_path(doctor),class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="digg_pagination">
+<%= will_paginate @doctors %>
+</div>
+
+<br>
+
+<%= link_to 'New Doctor', new_doctor_path, class:"btn btn-success" %>
